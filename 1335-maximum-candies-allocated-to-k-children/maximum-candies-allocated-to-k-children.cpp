@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool Helper(vector<int>& c, long long k, int g) {
+    bool Helper(vector<int>& c, long long k, long long g) {
         long long count = 0;
         int n = c.size();
 
@@ -14,16 +14,13 @@ public:
     }
     int maximumCandies(vector<int>& candies, long long k) {
         int low = 1;
-        long long high = 0;
+        int high = 0;
         int n = candies.size();
         int Ans = 0;
 
         for (int i = 0; i < n; i++) {
-            high += candies[i];
+            high = max(high,candies[i]);
         }
-
-        if (k > high)
-            return 0;
 
         while (low <= high) {
             long long guess = (low + high) / 2;
