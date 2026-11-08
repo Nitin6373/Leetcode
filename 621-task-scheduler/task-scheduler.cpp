@@ -22,7 +22,7 @@ public:
 
         int Count = 0;
         while (!q.empty() || !pq.empty()) {
-            if (!q.empty() && q.front().second.second == Count) {
+            if (!q.empty() && q.front().second.second <= Count) {
                 auto qpair = q.front();
                 q.pop();
                 pq.push({qpair.second.first, qpair.first});
