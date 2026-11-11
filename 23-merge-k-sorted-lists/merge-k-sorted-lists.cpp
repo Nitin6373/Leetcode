@@ -31,23 +31,21 @@ public:
         }
 
         while (!pq.empty()) {
-            auto el = pq.top();
+            ListNode* el = pq.top();
             pq.pop();
 
-            if(Head == NULL){
-                Head = new ListNode(el->val);
+            if (Head == NULL) {
+                Head = el;
                 Ans = Head;
-            }
-            else{
-                ListNode* T = new ListNode(el->val);
-                T->next = NULL;
-                Ans->next = T;
+            } else {
+                Ans->next = el;
                 Ans = Ans->next;
             }
-            if(el->next != NULL)
+            if (el->next != NULL)
                 pq.push(el->next);
         }
-
+        if (Ans != NULL)
+            Ans->next = NULL;
         return Head;
     }
 };
